@@ -31,13 +31,6 @@ If a queue name is set, logs will be processed asynchronously in the specified q
 Modify your `config/logging.php` file:
 
 ```php
-use TheCoder\MonologRocketChat\Attributes\EmergencyAttribute;
-use TheCoder\MonologRocketChat\Attributes\CriticalAttribute;
-use TheCoder\MonologRocketChat\Attributes\ImportantAttribute;
-use TheCoder\MonologRocketChat\Attributes\DebugAttribute;
-use TheCoder\MonologRocketChat\Attributes\InformationAttribute;
-use TheCoder\MonologRocketChat\Attributes\LowPriorityAttribute;
-
 return [
     'channels' => [
         'stack' => [
