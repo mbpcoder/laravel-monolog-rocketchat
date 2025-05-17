@@ -15,7 +15,7 @@ Logging should be more than just saving data — it should **drive action**. Her
 Install via Composer:
 
 ```sh
-composer require thecoder/laravel-monolog-rocketchat
+composer require mbpcoder/laravel-monolog-rocketchat
 ```
 
 ## ⚙️ Usage
