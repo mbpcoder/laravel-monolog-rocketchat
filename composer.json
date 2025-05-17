@@ -1,0 +1,35 @@
+{
+  "name": "thecoder/laravel-monolog-rocketchat",
+  "description": "Rocket Chat Handler for Monolog",
+  "keywords": [
+    "log",
+    "laravel",
+    "monolog",
+    "monolog-rocketchat",
+    "logging",
+    "bots",
+    "rocketchat",
+    "channels"
+  ],
+  "homepage": "https://github.com/mbpcoder/laravel-monolog-rocketchat",
+  "license": "MIT",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Mahdi Bagheri",
+      "email": "thecoder.ir@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "TheCoder\\MonologRocketChat\\": "src"
+    }
+  },
+  "require": {
+    "php": "^8.0",
+    "ext-curl": "*",
+    "ext-mbstring": "*",
+    "monolog/monolog": "^1.0|^2.0|^3.0"
+  }
+}
