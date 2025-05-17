@@ -1,5 +1,5 @@
 {
-  "name": "thecoder/laravel-monolog-rocketchat",
+  "name": "mbpcoder/laravel-monolog-rocketchat",
   "description": "Rocket Chat Handler for Monolog",
   "keywords": [
     "log",
