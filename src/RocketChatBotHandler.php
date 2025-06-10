@@ -60,10 +60,10 @@ class RocketChatBotHandler extends AbstractProcessingHandler
 
         $message = $this->truncateTextToRocketChatLimit($message);
 
-        if (empty($this->queue)) {
+        if (empty($this->queue) || empty($this->queue_connection)) {
             dispatch_sync(new SendJob($url, $message));
         } else {
-            dispatch(new SendJob($url, $message))->onQueue($this->queue);
+            dispatch(new SendJob($url, $message))->onConnection($this->queue_connection)->onQueue($this->queue);
         }
     }
 

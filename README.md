@@ -45,8 +45,9 @@ return [
             'handler_with' => [
                 'token' => env('LOG_ROCKET_CHAT_BOT_TOKEN'),
                 'chat_id' => env('LOG_ROCKET_CHAT_CHAT_ID'),
-                'bot_api' => env('LOG_ROCKET_CHAT_BOT_API'),
+                'api_url' => env('LOG_ROCKET_CHAT_BOT_API'),
                 'queue' => env('LOG_ROCKET_CHAT_QUEUE', null)
+                'queue_connection' => env('LOG_ROCKET_CHAT_QUEUE_CONNECTION', null),
             ],
             'formatter' => TheCoder\MonologRocketChat\RocketChatFormatter::class,
             'formatter_with' => [
