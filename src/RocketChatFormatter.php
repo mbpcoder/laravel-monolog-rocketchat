@@ -121,7 +121,7 @@ class RocketChatFormatter implements FormatterInterface
         }
 
         $message .= PHP_EOL . '*Request Inputs:* `' . str_replace(
-                ["\n", " ", '<', '>'], ['', '', '&lt;', '&gt;'], json_encode($request->except('password', 'password_confirmation'), JSON_UNESCAPED_UNICODE)
+                ["\n", " ", '<', '>'], ['', '', '&lt;', '&gt;'], json_encode($this->maskSensitiveData($request), JSON_UNESCAPED_UNICODE)
             ) . '`';
 
         $message .= PHP_EOL . PHP_EOL . '*Trace: * ' . PHP_EOL . '* => * => ' . substr($exception->getTraceAsString(), 0, 1000) . ' ...';
@@ -192,5 +192,28 @@ class RocketChatFormatter implements FormatterInterface
             return $severities[$key];
         }
         return '';
+    }
+
+    protected function maskSensitiveData($request): array
+    {
+        $sensitiveFields = [
+            'username',
+            'password',
+            'auth',
+            'token',
+            'key',
+            'credential',
+            'secret',
+            'password_confirmation'
+        ];
+
+        $data = $request->except($sensitiveFields);
+
+        $maskedData = $request->only($sensitiveFields);
+        foreach ($maskedData as $key => &$value) {
+            $value = '*';
+        }
+
+        return array_merge($data, $maskedData);
     }
 }
