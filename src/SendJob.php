@@ -37,6 +37,7 @@ class SendJob implements ShouldQueue
         $requestOptions = [
             'form_params' => [
                 'text' => $this->message,
+                "parseUrls" => false
             ]
         ];
 

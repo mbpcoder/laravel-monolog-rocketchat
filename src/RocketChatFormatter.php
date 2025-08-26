@@ -98,7 +98,7 @@ class RocketChatFormatter implements FormatterInterface
 
         $message .= '*File:* ' . $exception->getFile() . PHP_EOL
             . '*Line:* ' . $exception->getLine() . PHP_EOL
-            . '*Url:* ' . urldecode($request->url()) . PHP_EOL
+            . '*Url:* ' . urldecode(str_replace(['http://', 'https://'],'', $request->url())) . PHP_EOL
             . '*Ip:* ' . $request->getClientIp();
 
         $user = $request->user();
