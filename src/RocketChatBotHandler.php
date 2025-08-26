@@ -18,7 +18,7 @@ class RocketChatBotHandler extends AbstractProcessingHandler
     protected string|null $queue = null;
 
     public function __construct(
-        Level       $level,
+        mixed       $level,
         string      $api_url,
         string      $token,
         string|int  $chat_id,

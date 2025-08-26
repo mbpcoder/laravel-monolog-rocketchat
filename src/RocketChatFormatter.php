@@ -30,7 +30,7 @@ class RocketChatFormatter implements FormatterInterface
         $this->tags = $tags;
     }
 
-    public function format(LogRecord $record): string
+    public function format($record): string
     {
         $message = '';
         if (isset($record['context']) && isset($record['context']['exception'])) {
@@ -129,7 +129,7 @@ class RocketChatFormatter implements FormatterInterface
         return $message;
     }
 
-    protected function getMessageForLog(LogRecord $record): string
+    protected function getMessageForLog($record): string
     {
         $message = $this->format;
         $lineFormatter = new LineFormatter();
