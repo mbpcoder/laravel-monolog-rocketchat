@@ -162,6 +162,10 @@ class RocketChatFormatter implements FormatterInterface
 
         $message = str_replace(['%level_name%', '%channel%', '%date%'], [$record['level_name'], $record['channel'], $record['datetime']->format($this->dateFormat)], $message);
 
+        if (!empty($this->tags)) {
+            $message .= '*Tag:* ' . $this->getTags() . PHP_EOL;
+        }
+
         if ($this->html === false) {
             $message = strip_tags($message);
         }
