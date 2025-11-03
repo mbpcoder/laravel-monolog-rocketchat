@@ -1,5 +1,9 @@
 # Real-Time Laravel exception logs in your Rocket Chat  🚀
 
+## ScreenShot
+<img width="508" height="540" alt="image" src="https://github.com/user-attachments/assets/732ddfbc-cbc7-4826-ae37-9ae449dc0b13" />
+
+
 ## ❓ Why Another Logger?
 
 Logging should be more than just saving data — it should **drive action**. Here’s why 🔔 **Rocket Chat Handler for Monolog** 📝 is a game-changer:
