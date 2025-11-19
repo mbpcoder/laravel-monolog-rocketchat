@@ -88,7 +88,7 @@ class RocketChatFormatter implements FormatterInterface
 
         $message = $severity . ' *Time: * ' . date('Y-m-d H:i:s') . PHP_EOL
             . '*On:* ' . app()->environment() . PHP_EOL
-            . '*Message:* ' . $exception->getMessage() . PHP_EOL
+            . '*Message:* ' . $this->normalizeUrl($exception->getMessage()) . PHP_EOL
             . '*Exception:* ' . get_class($exception) . PHP_EOL
             . '*Code:* ' . $code . PHP_EOL;
 
@@ -98,7 +98,7 @@ class RocketChatFormatter implements FormatterInterface
 
         $message .= '*File:* ' . $exception->getFile() . PHP_EOL
             . '*Line:* ' . $exception->getLine() . PHP_EOL
-            . '*Url:* ' . urldecode(str_replace(['http://', 'https://'],'', $request->url())) . PHP_EOL
+            . '*Url:* ' . $this->normalizeUrl($request->url()) . PHP_EOL
             . '*Ip:* ' . $request->getClientIp();
 
         $user = $request->user();
@@ -110,7 +110,7 @@ class RocketChatFormatter implements FormatterInterface
         }
 
         if (!empty($request->headers->get('referer'))) {
-            $message .= PHP_EOL . '*Referer:* ' . $request->headers->get('referer');
+            $message .= PHP_EOL . '*Referer:* ' . $this->normalizeUrl($request->headers->get('referer'));
         }
 
         if (!empty($request->getMethod())) {
@@ -170,7 +170,7 @@ class RocketChatFormatter implements FormatterInterface
             $message = strip_tags($message);
         }
 
-        return $message;
+         return $this->normalizeUrl($message);
     }
 
     protected function getSeverityName($key): string
@@ -219,5 +219,10 @@ class RocketChatFormatter implements FormatterInterface
         }
 
         return array_merge($data, $maskedData);
+    }
+
+    protected function normalizeUrl(string $url): string
+    {
+        return urldecode(str_replace(['http://', 'https://'], '', $url));
     }
 }
